@@ -1,0 +1,15 @@
+{
+  "name": "catalogo-interativo-jogos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Catálogo interativo de jogos com HTML, CSS e TypeScript",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "npm run build && npx serve ."
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "serve": "^14.2.5"
+  }
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d111b" />
+  <meta name="description" content="Organize sua coleção de jogos com o GameVault." />
+  <title>GameVault — Seu catálogo de jogos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="dist/main.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#inicio" aria-label="GameVault início"><span class="brand-icon">◈</span><span>GAME<span class="brand-accent">VAULT</span></span></a>
+      <div class="side-label">MENU PRINCIPAL</div>
+      <nav aria-label="Navegação principal">
+        <a class="nav-link active" href="#inicio"><span>▦</span> Visão geral</a>
+        <a class="nav-link" href="#catalogo"><span>▤</span> Minha biblioteca</a>
+        <a class="nav-link" href="#adicionar"><span>＋</span> Adicionar jogo</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="side-tip"><span class="tip-icon">✦</span><strong>Sua coleção, seu jeito.</strong><p>Organize os jogos que você ama em um só lugar.</p></div><small>GAMEVAULT • PROJETO TYPESCRIPT</small></div>
+    </aside>
+    <main class="main-content" id="inicio">
+      <header class="topbar"><div class="crumb">Biblioteca <span>/</span> Visão geral</div><div class="top-tag"><span class="live-dot"></span> Catálogo pessoal</div></header>
+      <section class="hero"><div><span class="eyebrow">SEU UNIVERSO GAMER</span><h1>Seus jogos.<br><span>Seu universo.</span></h1><p>Todos os seus títulos favoritos, organizados em um só lugar. Explore, acompanhe e gerencie sua coleção.</p><a class="primary-btn" href="#adicionar">＋ Adicionar novo jogo</a></div><div class="hero-art" aria-hidden="true"><div class="art-ring art-ring-1"></div><div class="art-ring art-ring-2"></div><div class="controller">🎮</div><span class="art-spark spark-a">✦</span><span class="art-spark spark-b">✧</span></div></section>
+      <section class="overview" aria-labelledby="overview-title"><div class="section-heading"><div><span class="eyebrow">ACOMPANHE SEU PROGRESSO</span><h2 id="overview-title">Visão geral</h2></div><span class="muted">Estatísticas da sua biblioteca</span></div><div class="stats-grid"><article class="stat-card"><span class="stat-icon purple">▦</span><span class="stat-label">Total de jogos</span><strong id="total-count">0</strong><small>Na sua biblioteca</small></article><article class="stat-card"><span class="stat-icon blue">▶</span><span class="stat-label">Jogando</span><strong id="playing-count">0</strong><small>Em andamento</small></article><article class="stat-card"><span class="stat-icon green">✓</span><span class="stat-label">Concluídos</span><strong id="completed-count">0</strong><small>Jogos finalizados</small></article><article class="stat-card"><span class="stat-icon orange">◷</span><span class="stat-label">Não iniciados</span><strong id="backlog-count">0</strong><small>Próximas aventuras</small></article></div></section>
+      <section id="catalogo" class="library" aria-labelledby="library-title"><div class="section-heading"><div><span class="eyebrow">EXPLORE SUA COLEÇÃO</span><h2 id="library-title">Minha biblioteca <span class="count-pill" id="library-count">0</span></h2></div><a href="#adicionar" class="outline-btn">＋ Novo jogo</a></div><div class="filters"><label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar pelo nome do jogo..." aria-label="Buscar jogos pelo nome" /></label><label class="select-wrap"><span>Categoria</span><select id="category-filter" aria-label="Filtrar por categoria"><option value="">Todas as categorias</option><option>Ação</option><option>Aventura</option><option>RPG</option><option>Estratégia</option><option>Esporte</option><option>Corrida</option><option>Simulação</option><option>Outros</option></select></label><label class="select-wrap"><span>Status</span><select id="status-filter" aria-label="Filtrar por status"><option value="">Todos os status</option><option value="nao-iniciado">Não iniciado</option><option value="jogando">Jogando</option><option value="concluido">Concluído</option></select></label></div><div id="games-grid" class="games-grid" aria-live="polite"></div><div id="empty-state" class="empty-state" hidden><div>🎮</div><h3 id="empty-title">Nenhum jogo encontrado</h3><p id="empty-description">Tente mudar os filtros ou adicione um novo jogo.</p><button type="button" id="clear-filters" class="outline-btn">Limpar filtros</button></div></section>
+      <section class="form-section" id="adicionar" aria-labelledby="form-title"><div class="section-heading"><div><span class="eyebrow">EXPANDA SUA COLEÇÃO</span><h2 id="form-title">Adicionar novo jogo</h2></div></div><div class="form-panel"><div class="form-intro"><div class="form-illustration">✧</div><h3>Uma nova aventura começa aqui.</h3><p>Preencha os detalhes para adicionar um título à sua biblioteca pessoal.</p></div><form id="game-form" novalidate><div class="field"><label for="game-title">Nome do jogo <span>*</span></label><input id="game-title" name="title" type="text" maxlength="80" required placeholder="Ex.: Minecraft" /><small class="field-error" id="title-error"></small></div><div class="field-row"><div class="field"><label for="game-category">Categoria <span>*</span></label><select id="game-category" name="category" required><option value="">Selecione...</option><option>Ação</option><option>Aventura</option><option>RPG</option><option>Estratégia</option><option>Esporte</option><option>Corrida</option><option>Simulação</option><option>Outros</option></select><small class="field-error" id="category-error"></small></div><div class="field"><label for="game-price">Preço (R$) <span>*</span></label><input id="game-price" name="price" type="number" min="0" max="999999" step="0.01" required placeholder="0,00" /><small class="field-error" id="price-error"></small></div></div><div class="field"><label for="game-status">Status <span>*</span></label><select id="game-status" name="status" required><option value="nao-iniciado">Não iniciado</option><option value="jogando">Jogando</option><option value="concluido">Concluído</option></select></div><button class="primary-btn submit-btn" type="submit">＋ Adicionar à biblioteca</button><p class="form-note">* Campos obrigatórios. Os dados ficam salvos neste navegador.</p></form></div></section>
+      <footer>© 2026 GameVault <span>Desenvolvido com HTML, CSS e TypeScript</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
